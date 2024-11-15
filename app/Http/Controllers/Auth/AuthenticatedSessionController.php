@@ -39,10 +39,13 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+        /**
+         * Log out User Only and not the Admin 
+         */
+        $request->session()->forget('guard.web');
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/register');
     }
 }
