@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\User;
+use App\Notifications\NewUserRegisteredNotification;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -43,6 +46,16 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        // send notifications to admin
+         $admin = Admin::find(1);
+         $admin->notify(new NewUserRegisteredNotification($user));
+        // Notification::send(Admin::find(1), new NewUserRegisteredNotification($user));
+
+//        $admins = Admin::all();
+//        Notification::send(Admin::all(), new NewUserRegisteredNotification($user));
+
+
 
         Auth::login($user);
 
