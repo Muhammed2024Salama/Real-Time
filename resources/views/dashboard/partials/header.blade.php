@@ -6,9 +6,9 @@
     <ul class="nav">
 
         <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+            <a class="nav-link text-muted my-2 notificationsIcon" href="./#" data-toggle="modal" data-target=".modal-notif">
                 <span class="fe fe-bell fe-16"></span>
-                <span class="dot dot-md text-danger">{{ count(Auth::guard('admin')->user()->unreadnotifications) }}</span>
+                <span class="dot dot-md text-danger" id="notificationsIconCounter">{{ count(Auth::guard('admin')->user()->unreadnotifications) }}</span>
             </a>
         </li>
 
@@ -23,7 +23,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="notificationsModel">
                         @if(count(Auth::guard('admin')->user()->notifications) > 0)
                             <div class="list-group list-group-flush my-n3">
                                 @foreach(Auth::guard('admin')->user()->notifications->take(4) as $notification)
@@ -33,7 +33,7 @@
                                                 <span class="fe fe-box fe-24"></span>
                                             </div>
                                             <div class="col">
-                                                <small><strong>{{ $notification->data['name'] }} Registered</strong></small>
+                                                 <small><strong>{{ $notification->data['name'] }} Registered</strong></small>
                                                 <div class="my-0 text-muted small">{{ $notification->data['message'] }}</div>
                                                 <small class="badge badge-pill badge-light text-muted">{{ $notification->created_at->diffForHumans() }}</small>
                                             </div>
@@ -44,7 +44,7 @@
                         @endif
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear
+                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal" id="clearNotifications">Clear
                             All</button>
                     </div>
                 </div>
