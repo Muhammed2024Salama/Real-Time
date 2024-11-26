@@ -26,25 +26,27 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app-dark.css') }}" id="darkTheme" disabled>
     @stack('styles')
 
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script>
+{{--    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>--}}
+{{--    <script>--}}
 
-        // Enable Pusher Logging - don't include this in production
+{{--        // Enable Pusher Logging - don't include this in production--}}
 
-        pusher.logToConsole = false;
+{{--        pusher.logToConsole = false;--}}
 
-        var pusher = new Pusher({{ env('PUSHER_APP_KEY') }}, {
-            cluster: 'mt1'
-        });
+{{--        var pusher = new Pusher({{ env('PUSHER_APP_KEY') }}, {--}}
+{{--            cluster: 'mt1'--}}
+{{--        });--}}
 
-        /**
-         * App\\Events\\NewUserRegisteredEvent
-         * Event Name located in App\\Events\\NewUserRegisteredEvent
-         */
-        channel.bind('App\\Events\\NewUserRegisteredEvent' , function(data){
-            console.log(data['message']);
-            $(".notificationsIcon").load(" .notificationsIcon > *");
-            $("#notificationsModel").load(" #notificationsModel > *");
-        });
-    </script>
+{{--        /**--}}
+{{--         * App\\Events\\NewUserRegisteredEvent--}}
+{{--         * Event Name located in App\\Events\\NewUserRegisteredEvent--}}
+{{--         */--}}
+{{--        channel.bind('App\\Events\\NewUserRegisteredEvent' , function(data){--}}
+{{--            console.log(data['message']);--}}
+{{--            $(".notificationsIcon").load(" .notificationsIcon > *");--}}
+{{--            $("#notificationsModel").load(" #notificationsModel > *");--}}
+{{--        });--}}
+{{--    </script>--}}
+
+    @vite('resources/js/app.js')
 </head>
