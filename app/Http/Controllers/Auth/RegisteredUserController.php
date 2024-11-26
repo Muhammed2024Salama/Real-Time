@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
 
         // BroadCast Event
         // First Way
-        NewUserRegisteredEvent::dispatch();
+        NewUserRegisteredEvent::dispatch($user);
 
         // BroadCast Event
         // Second Way

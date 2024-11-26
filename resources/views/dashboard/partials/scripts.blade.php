@@ -29,45 +29,45 @@
 <script src='{{ asset('assets/js/uppy.min.js') }}'></script>
 <script src='{{ asset('assets/js/quill.min.js') }}'></script>
 
-<script>
-    $("document").ready(function() {
-        /**
-         * Mark All Notification To Read
-         */
-        $(document).on('click', ".notificationsIcon" , function() {
-            $.ajax({
-                url: {{ Illuminate\Support\Js::from(route('admin.notifications.read')) }},
-                method: 'get',
-                success: function (data) {
-                    $("#notificationsIconCounter").load(" #notificationsIconCounter > *");
-                    $("#notificationsModel").load(" #notificationsModel > *");
+{{--<script>--}}
+{{--    $("document").ready(function() {--}}
+{{--        /**--}}
+{{--         * Mark All Notification To Read--}}
+{{--         */--}}
+{{--        $(document).on('click', ".notificationsIcon" , function() {--}}
+{{--            $.ajax({--}}
+{{--                url: {{ Illuminate\Support\Js::from(route('admin.notifications.read')) }},--}}
+{{--                method: 'get',--}}
+{{--                success: function (data) {--}}
+{{--                    $("#notificationsIconCounter").load(" #notificationsIconCounter > *");--}}
+{{--                    $("#notificationsModel").load(" #notificationsModel > *");--}}
 
-                },
-                error: function () {
-                    alert('Please try again .....');
-                },
-            });
-        });
+{{--                },--}}
+{{--                error: function () {--}}
+{{--                    alert('Please try again .....');--}}
+{{--                },--}}
+{{--            });--}}
+{{--        });--}}
 
-        /**
-         * Clear All Notification
-         */
-        $(document).on('click', "#clearNotifications" , function() {
-            $.ajax({
-                url: {{ Illuminate\Support\Js::from(route('admin.notifications.clear')) }},
-                method: 'get',
-                success: function (data) {
-                    $("#notificationsIconCounter").load(" #notificationsIconCounter > *");
-                    $("#notificationsModel").load(" #notificationsModel > *");
+{{--        /**--}}
+{{--         * Clear All Notification--}}
+{{--         */--}}
+{{--        $(document).on('click', "#clearNotifications" , function() {--}}
+{{--            $.ajax({--}}
+{{--                url: {{ Illuminate\Support\Js::from(route('admin.notifications.clear')) }},--}}
+{{--                method: 'get',--}}
+{{--                success: function (data) {--}}
+{{--                    $("#notificationsIconCounter").load(" #notificationsIconCounter > *");--}}
+{{--                    $("#notificationsModel").load(" #notificationsModel > *");--}}
 
-                },
-                error: function () {
-                    alert('Please try again .....');
-                },
-            });
-        });
-    });
-</script>
+{{--                },--}}
+{{--                error: function () {--}}
+{{--                    alert('Please try again .....');--}}
+{{--                },--}}
+{{--            });--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
 
 
 {{-- Wrong Way of synchronizing --}}
